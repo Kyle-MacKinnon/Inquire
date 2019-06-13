@@ -7,7 +7,13 @@ import Navigation from "./components/navigation/navigation";
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <Navigation
+        project="California, USA"
+        entries={{
+          home: { text: "Brentwood" },
+          focus: { text: "Park bench" }
+        }}
+      />
     </div>
   );
 }

@@ -3,11 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
 import Paper from "@material-ui/core/Paper";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
@@ -34,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // React Component
-export default function Path() {
+export default function Path(props) {
   const classes = useStyles();
 
   function handleClick(event) {
@@ -42,6 +40,7 @@ export default function Path() {
     alert("You clicked a breadcrumb.");
   }
 
+  // Side menu
   const menu = (
     <IconButton
       edge="start"
@@ -53,38 +52,48 @@ export default function Path() {
     </IconButton>
   );
 
+  // Name of the project
   const title = (
     <Box className={classes.titleContainer}>
       <Typography variant="h6" className={classes.title}>
-        Texas, United States of America
+        {props.project}
       </Typography>
     </Box>
   );
 
-  const homeLink = (
-    <Link
-      color="inherit"
-      href="/"
-      onClick={handleClick}
-      className={classes.breadcrumbLink}
-    >
-      <HomeIcon className={classes.breadcrumbIcon} />
-      Dalworthington
-    </Link>
-  );
+  // Generate links for all breadcrumb entries before combining
+  let breadCrumbEntries = [];
 
-  const focusLink = (
-    <Typography color="textPrimary" className={classes.breadcrumbLink}>
-      <GrainIcon className={classes.breadcrumbIcon} />
-      Park bench
-    </Typography>
-  );
+  // Where the user is currently located in the game
+  if (props.entries.home) {
+    breadCrumbEntries.push(
+      <Link
+        color="inherit"
+        href="/"
+        onClick={handleClick}
+        className={classes.breadcrumbLink}
+      >
+        <HomeIcon className={classes.breadcrumbIcon} />
+        {props.entries.home.text}
+      </Link>
+    );
+  }
 
+  // What the user is currently focused on
+  if (props.entries.focus) {
+    breadCrumbEntries.push(
+      <Typography color="textPrimary" className={classes.breadcrumbLink}>
+        <GrainIcon className={classes.breadcrumbIcon} />
+        {props.entries.focus.text}
+      </Typography>
+    );
+  }
+
+  // Merge all found breadcrumbs together
   const breadCrumbs = (
     <Paper elevation={0} className={classes.paper}>
       <Breadcrumbs aria-label="Breadcrumb" className={classes.breadcrumbs}>
-        {homeLink}
-        {focusLink}
+        {breadCrumbEntries}
       </Breadcrumbs>
     </Paper>
   );
