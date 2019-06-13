@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
+
 import Navigation from "./components/navigation/navigation";
+import Output from "./components/output/output";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
           focus: { text: "Park bench" }
         }}
       />
+      <Output />
     </div>
   );
 }

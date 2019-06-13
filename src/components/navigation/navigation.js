@@ -6,14 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Paper from "@material-ui/core/Paper";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 
-// Icons
-import HomeIcon from "@material-ui/icons/Home";
-import GrainIcon from "@material-ui/icons/Grain";
+import SideMenu from "./side-menu";
+import BreadCrumbs from "./breadcrumbs";
+
+import BagIcon from "@material-ui/icons/Work";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -21,24 +19,24 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   title: { marginTop: "0px", marginBottom: "3px" },
-  toolbar: { marginTop: "5px", marginBottom: "10px" },
-  breadcrumbs: { padding: theme.spacing(1, 2) },
-  breadcrumbLink: {
-    display: "flex"
-  },
-  breadcrumbIcon: {
-    marginRight: theme.spacing(0.5)
-  }
+  toolbar: { marginTop: "5px", marginBottom: "10px" }
 }));
 
 // React Component
-export default function Path(props) {
+export default function Navigation(props) {
   const classes = useStyles();
 
-  function handleClick(event) {
-    event.preventDefault();
-    alert("You clicked a breadcrumb.");
-  }
+  // Drawer state
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const toggleDrawer = open => event => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    )
+      return;
+
+    setDrawerOpen(open);
+  };
 
   // Side menu
   const menu = (
@@ -47,8 +45,9 @@ export default function Path(props) {
       className={classes.menuButton}
       color="inherit"
       aria-label="Menu"
+      onClick={toggleDrawer(true)}
     >
-      <MenuIcon />
+      <BagIcon />
     </IconButton>
   );
 
@@ -61,50 +60,14 @@ export default function Path(props) {
     </Box>
   );
 
-  // Generate links for all breadcrumb entries before combining
-  let breadCrumbEntries = [];
-
-  // Where the user is currently located in the game
-  if (props.entries.home) {
-    breadCrumbEntries.push(
-      <Link
-        color="inherit"
-        href="/"
-        onClick={handleClick}
-        className={classes.breadcrumbLink}
-      >
-        <HomeIcon className={classes.breadcrumbIcon} />
-        {props.entries.home.text}
-      </Link>
-    );
-  }
-
-  // What the user is currently focused on
-  if (props.entries.focus) {
-    breadCrumbEntries.push(
-      <Typography color="textPrimary" className={classes.breadcrumbLink}>
-        <GrainIcon className={classes.breadcrumbIcon} />
-        {props.entries.focus.text}
-      </Typography>
-    );
-  }
-
-  // Merge all found breadcrumbs together
-  const breadCrumbs = (
-    <Paper elevation={0} className={classes.paper}>
-      <Breadcrumbs aria-label="Breadcrumb" className={classes.breadcrumbs}>
-        {breadCrumbEntries}
-      </Breadcrumbs>
-    </Paper>
-  );
-
   return (
     <AppBar position="static">
+      <SideMenu open={drawerOpen} toggle={toggleDrawer} />
       <Toolbar className={classes.toolbar}>
         {menu}
         <Grid container direction="column">
           {title}
-          {breadCrumbs}
+          <BreadCrumbs entries={props.entries} />
         </Grid>
       </Toolbar>
     </AppBar>
