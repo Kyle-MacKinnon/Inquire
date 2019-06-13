@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
-import Path from "./components/path/path";
+import Navigation from "./components/navigation/navigation";
 
 function App() {
   return (
     <div className="App">
-      <Path />
+      <Navigation />
     </div>
   );
 }

@@ -17,27 +17,24 @@ import Box from "@material-ui/core/Box";
 import HomeIcon from "@material-ui/icons/Home";
 import GrainIcon from "@material-ui/icons/Grain";
 
+// Styles
 const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
-
   title: { marginTop: "0px", marginBottom: "3px" },
-
   toolbar: { marginTop: "5px", marginBottom: "10px" },
-
   breadcrumbs: { padding: theme.spacing(1, 2) },
-
   breadcrumbLink: {
     display: "flex"
   },
-
   breadcrumbIcon: {
     marginRight: theme.spacing(0.5)
   }
 }));
 
-export default function MenuAppBar() {
+// React Component
+export default function Path() {
   const classes = useStyles();
 
   function handleClick(event) {
@@ -45,49 +42,60 @@ export default function MenuAppBar() {
     alert("You clicked a breadcrumb.");
   }
 
+  const menu = (
+    <IconButton
+      edge="start"
+      className={classes.menuButton}
+      color="inherit"
+      aria-label="Menu"
+    >
+      <MenuIcon />
+    </IconButton>
+  );
+
+  const title = (
+    <Box className={classes.titleContainer}>
+      <Typography variant="h6" className={classes.title}>
+        Texas, United States of America
+      </Typography>
+    </Box>
+  );
+
+  const homeLink = (
+    <Link
+      color="inherit"
+      href="/"
+      onClick={handleClick}
+      className={classes.breadcrumbLink}
+    >
+      <HomeIcon className={classes.breadcrumbIcon} />
+      Dalworthington
+    </Link>
+  );
+
+  const focusLink = (
+    <Typography color="textPrimary" className={classes.breadcrumbLink}>
+      <GrainIcon className={classes.breadcrumbIcon} />
+      Park bench
+    </Typography>
+  );
+
+  const breadCrumbs = (
+    <Paper elevation={0} className={classes.paper}>
+      <Breadcrumbs aria-label="Breadcrumb" className={classes.breadcrumbs}>
+        {homeLink}
+        {focusLink}
+      </Breadcrumbs>
+    </Paper>
+  );
+
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Menu"
-        >
-          <MenuIcon />
-        </IconButton>
-
+        {menu}
         <Grid container direction="column">
-          <Box className={classes.titleContainer}>
-            <Typography variant="h6" className={classes.title}>
-              Texas, United States of America
-            </Typography>
-          </Box>
-
-          <Paper elevation={0} className={classes.paper}>
-            <Breadcrumbs
-              aria-label="Breadcrumb"
-              className={classes.breadcrumbs}
-            >
-              <Link
-                color="inherit"
-                href="/"
-                onClick={handleClick}
-                className={classes.breadcrumbLink}
-              >
-                <HomeIcon className={classes.breadcrumbIcon} />
-                Dalworthington
-              </Link>
-
-              <Typography
-                color="textPrimary"
-                className={classes.breadcrumbLink}
-              >
-                <GrainIcon className={classes.breadcrumbIcon} />
-                Park bench
-              </Typography>
-            </Breadcrumbs>
-          </Paper>
+          {title}
+          {breadCrumbs}
         </Grid>
       </Toolbar>
     </AppBar>
