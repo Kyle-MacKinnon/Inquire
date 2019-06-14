@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Navigation
-        project="Planet Earth"
+        project="United States"
         entries={{
           area: { text: "California" },
           location: { text: "Brentwood" }
