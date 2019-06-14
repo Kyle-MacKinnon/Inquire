@@ -6,8 +6,8 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 
 // Icons
-import HomeIcon from "@material-ui/icons/Home";
-import GrainIcon from "@material-ui/icons/Grain";
+import AreaIcon from "@material-ui/icons/AccountBalance";
+import LocationIcon from "@material-ui/icons/LocationOn";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -33,7 +33,7 @@ export default function NavBreadcrumbs(props) {
   let breadcrumbEntries = [];
 
   // Where the user is currently located in the game
-  if (props.entries.home) {
+  if (props.entries.area) {
     breadcrumbEntries.push(
       <Link
         color="inherit"
@@ -41,18 +41,18 @@ export default function NavBreadcrumbs(props) {
         onClick={handleClick}
         className={classes.breadcrumbLink}
       >
-        <HomeIcon className={classes.breadcrumbIcon} />
-        {props.entries.home.text}
+        <AreaIcon className={classes.breadcrumbIcon} />
+        {props.entries.area.text}
       </Link>
     );
   }
 
   // What the user is currently focused on
-  if (props.entries.focus) {
+  if (props.entries.location) {
     breadcrumbEntries.push(
       <Typography color="textPrimary" className={classes.breadcrumbLink}>
-        <GrainIcon className={classes.breadcrumbIcon} />
-        {props.entries.focus.text}
+        <LocationIcon className={classes.breadcrumbIcon} />
+        {props.entries.location.text}
       </Typography>
     );
   }

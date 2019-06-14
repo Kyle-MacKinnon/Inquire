@@ -10,10 +10,10 @@ function App() {
   return (
     <div className="App">
       <Navigation
-        project="California, USA"
+        project="Planet Earth"
         entries={{
-          home: { text: "Brentwood" },
-          focus: { text: "Park bench" }
+          area: { text: "California" },
+          location: { text: "Brentwood" }
         }}
       />
       <Output />

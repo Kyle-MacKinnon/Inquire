@@ -11,8 +11,6 @@ import Box from "@material-ui/core/Box";
 import SideMenu from "./side-menu";
 import BreadCrumbs from "./breadcrumbs";
 
-import BagIcon from "@material-ui/icons/Work";
-
 // Styles
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -47,7 +45,7 @@ export default function Navigation(props) {
       aria-label="Menu"
       onClick={toggleDrawer(true)}
     >
-      <BagIcon />
+      <MenuIcon />
     </IconButton>
   );
 

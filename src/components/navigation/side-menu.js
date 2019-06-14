@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
   },
   fullList: {
     width: "auto"
+  },
+  entry: {
+    marginLeft: "15px"
   }
 }));
 
@@ -39,7 +42,7 @@ export default function SideMenu(props) {
         </ListItem>
         <ListItem button key={"Letter"}>
           <ListItemIcon>
-            <ArrowIcon />
+            <ArrowIcon className={classes.entry} />
           </ListItemIcon>
           <ListItemText primary={"Bussiness Suit"} />
         </ListItem>
@@ -51,13 +54,13 @@ export default function SideMenu(props) {
         </ListItem>
         <ListItem button key={"Letter"}>
           <ListItemIcon>
-            <ArrowIcon />
+            <ArrowIcon className={classes.entry} />
           </ListItemIcon>
           <ListItemText primary={"Letter"} />
         </ListItem>
         <ListItem button key={"Postage Stamp"}>
           <ListItemIcon>
-            <ArrowIcon />
+            <ArrowIcon className={classes.entry} />
           </ListItemIcon>
           <ListItemText primary={"Postage Stamp"} />
         </ListItem>

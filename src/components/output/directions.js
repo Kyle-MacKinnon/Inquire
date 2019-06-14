@@ -9,7 +9,6 @@ import ArrowDown from "@material-ui/icons/ArrowDownward";
 import ArrowLeft from "@material-ui/icons/ArrowBack";
 import ArrowRight from "@material-ui/icons/ArrowForward";
 
-import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
