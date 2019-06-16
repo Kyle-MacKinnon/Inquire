@@ -10,7 +10,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import DirectionsIcon from "@material-ui/icons/DirectionsWalk";
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  paper: {
     padding: theme.spacing(1, 1)
   }
 }));
@@ -18,9 +18,9 @@ const useStyles = makeStyles(theme => ({
 export default function TravelMessage() {
   const classes = useStyles();
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.paper}>
       <Typography component="p">
-        <ListItem button key={"LeftDirection"}>
+        <ListItem key={"TravelMessage"}>
           <ListItemIcon>
             <DirectionsIcon />
           </ListItemIcon>

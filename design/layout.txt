@@ -1,0 +1,15 @@
+
+<Always Visible>
+
+    - Title
+
+    - Location & Focus
+        City > House > Chair
+        Belongings > Briefcase
+
+
+<Game Mode>
+
+    - Room description
+    - Adjacent locations
+        - Travel message

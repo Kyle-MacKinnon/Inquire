@@ -4,18 +4,18 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  paper: {
     padding: theme.spacing(3, 2),
     marginTop: "10px",
     marginBottom: "10px"
   }
 }));
 
-export default function Textbox() {
+export default function Description() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.paper}>
       <Typography component="p">
         Brentwood began as a community in the late 19th century, and is still
         known throughout the Bay Area for its agricultural products, primarily
